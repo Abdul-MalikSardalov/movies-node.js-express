@@ -1,25 +1,19 @@
-import express from 'express';
+import express, { urlencoded } from 'express';
 import dotenv from 'dotenv';
 
-// initialize dotenv
 dotenv.config();
 
-//create port
-const PORT = process.env.PORT || 3005;
+const PORT = 3000 || 3005; //dotenv not working
 
-// init express
 const app = express();
 
-//import router
-import bookRoutes from './routes/booksRouters.js';
+import moviesRoutes from './routes/moviesRoutes.js';
 
-// parse body
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-//middleware use routes
-app.use('/api/books', bookRoutes); //define the base route
+app.use('/api/movies', moviesRoutes);
 
-//listen to server
-app.listen(PORT, () => {
+app.listen(PORT, (req, res) => {
     console.log(`Server is up and running on port : ${PORT}`);
 });
