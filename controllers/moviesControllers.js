@@ -40,7 +40,7 @@ const moviesControllers = {
         const { id } = req.params;
         const movieExist = getMovieById(id);
         if (movieExist) {
-            res.status(200).render('movies', { movies: [movies[id]] });
+            res.status(200).render('movies', { movies: [movies[id - 1]] });
         } else {
             res.status(404).render('404', {
                 errorStatus: '404',
