@@ -5,8 +5,7 @@ import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
 
 dotenv.config();
-
-const PORT = 3000 || 3005; //dotenv not working
+const PORT = process.env.PORT || 3005;
 
 const __filename = fileURLToPath(import.meta.url);
 const PATH = dirname(__filename);
